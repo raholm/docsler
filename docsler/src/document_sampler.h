@@ -1,5 +1,5 @@
-#ifndef DOCSLER_UTIL_H_
-#define DOCSLER_UTIL_H_
+#ifndef DOCSLER_DOCUMENT_SAMPLER_H_
+#define DOCSLER_DOCUMENT_SAMPLER_H_
 
 #include "def.h"
 
@@ -35,21 +35,17 @@ namespace docsler {
     Document next(size_t length) override;
 
   private:
+    size_t next_id_;
+
     RandomNumberGenerator generator_;
     TopicDistribution topic_dist_;
     TypeDistributionVector type_dists_;
-    size_t next_id_;
 
-    inline Topic next_topic() {
-      return topic_dist_(generator_);
-    }
-
-    inline Type next_type(const Topic& topic) {
-      return type_dists_.at(topic)(generator_);
-    }
+    Topic next_topic();
+    Type next_type(const Topic& topic);
 
   };
 
 } // namespace docsler
 
-#endif // DOCSLER_UTIL_H_
+#endif // DOCSLER_DOCUMENT_SAMPLER_H_

@@ -6,10 +6,10 @@ namespace docsler {
 
   LdaDocumentSampler::LdaDocumentSampler(const DoubleVector& topic_probs,
                                          const DoubleMatrix& topic_type_probs)
-    : generator_{},
+    : next_id_{0},
+      generator_{},
       topic_dist_{topic_probs.cbegin(), topic_probs.cend()},
-      type_dists_(topic_type_probs.size()),
-      next_id_{0}
+      type_dists_(topic_type_probs.size())
   {
     generator_.seed(std::random_device()());
 
@@ -33,6 +33,14 @@ namespace docsler {
     }
 
     return document;
+  }
+
+  inline Topic LdaDocumentSampler::next_topic() {
+    return topic_dist_(generator_);
+  }
+
+  inline Type LdaDocumentSampler::next_type(const Topic& topic) {
+    return type_dists_.at(topic)(generator_);
   }
 
 }
