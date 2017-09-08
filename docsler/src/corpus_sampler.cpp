@@ -103,7 +103,6 @@ namespace docsler {
     return corpus;
   }
 
-
   inline Topic LdaCorpusSampler::next_topic(const size_t& doc) {
     if (topic_dists_.size() == 1)
       return topic_dists_.at(0)(generator_);
