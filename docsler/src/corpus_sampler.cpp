@@ -94,8 +94,10 @@ namespace docsler {
       types.at(i) = current_type;
       topics.at(i) = current_topic;
 
-      if ((i - cumsum_of_processed_doc_lengths) == length)
+      if ((i - cumsum_of_processed_doc_lengths) == length) {
         cumsum_of_processed_doc_lengths += length;
+        ++current_doc;
+      }
     }
 
     return corpus;
