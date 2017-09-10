@@ -68,7 +68,7 @@ namespace docsler {
       types.at(i) = current_type;
       topics.at(i) = current_topic;
 
-      if ((i - cumsum_of_processed_doc_lengths) == length.at(current_doc))
+      if ((i - cumsum_of_processed_doc_lengths) == (length.at(current_doc) - 1))
         cumsum_of_processed_doc_lengths += length.at(current_doc++);
     }
 
@@ -94,7 +94,7 @@ namespace docsler {
       types.at(i) = current_type;
       topics.at(i) = current_topic;
 
-      if ((i - cumsum_of_processed_doc_lengths) == length) {
+      if ((i - cumsum_of_processed_doc_lengths) == (length - 1)) {
         cumsum_of_processed_doc_lengths += length;
         ++current_doc;
       }
