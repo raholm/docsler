@@ -8,9 +8,9 @@
 using namespace docsler;
 
 // [[Rcpp::export]]
-Rcpp::DataFrame sample_document_cpp(size_t length,
-                                    const Rcpp::NumericVector& topic_probs,
-                                    const Rcpp::NumericMatrix& topic_type_probs) {
+Rcpp::DataFrame sample_document_by_lda_cpp(size_t length,
+                                        const Rcpp::NumericVector& topic_probs,
+                                        const Rcpp::NumericMatrix& topic_type_probs) {
   LdaDocumentSampler sampler{convert_from_R(topic_probs),
       convert_from_R(topic_type_probs)};
   Document document = sampler.next(length);
@@ -21,9 +21,9 @@ Rcpp::DataFrame sample_document_cpp(size_t length,
 }
 
 // [[Rcpp::export]]
-Rcpp::DataFrame sample_corpus_cpp(const Rcpp::IntegerVector length,
-                                  const Rcpp::NumericMatrix& topic_probs,
-                                  const Rcpp::NumericMatrix& topic_type_probs) {
+Rcpp::DataFrame sample_corpus_by_lda_cpp(const Rcpp::IntegerVector length,
+                                      const Rcpp::NumericMatrix& topic_probs,
+                                      const Rcpp::NumericMatrix& topic_type_probs) {
   LdaCorpusSampler sampler{(size_t) length.size(),
       convert_from_R(topic_probs),
       convert_from_R(topic_type_probs)};

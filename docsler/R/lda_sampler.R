@@ -15,9 +15,9 @@ lda <- function(size, model, alpha) {
     topic_probs <- MCMCpack::rdirichlet(n, alpha)
 
     if (n == 1)
-        document <- sample_document_cpp(size, topic_probs, model)
+        document <- sample_document_by_lda_cpp(size, topic_probs, model)
     else
-        document <-  sample_corpus_cpp(size, topic_probs, model)
+        document <-  sample_corpus_by_lda_cpp(size, topic_probs, model)
 
     document %>%
         dplyr::as_data_frame()

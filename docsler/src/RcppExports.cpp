@@ -5,36 +5,36 @@
 
 using namespace Rcpp;
 
-// sample_document_cpp
-Rcpp::DataFrame sample_document_cpp(size_t length, const Rcpp::NumericVector& topic_probs, const Rcpp::NumericMatrix& topic_type_probs);
-RcppExport SEXP _docsler_sample_document_cpp(SEXP lengthSEXP, SEXP topic_probsSEXP, SEXP topic_type_probsSEXP) {
+// sample_document_by_lda_cpp
+Rcpp::DataFrame sample_document_by_lda_cpp(size_t length, const Rcpp::NumericVector& topic_probs, const Rcpp::NumericMatrix& topic_type_probs);
+RcppExport SEXP _docsler_sample_document_by_lda_cpp(SEXP lengthSEXP, SEXP topic_probsSEXP, SEXP topic_type_probsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< size_t >::type length(lengthSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type topic_probs(topic_probsSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type topic_type_probs(topic_type_probsSEXP);
-    rcpp_result_gen = Rcpp::wrap(sample_document_cpp(length, topic_probs, topic_type_probs));
+    rcpp_result_gen = Rcpp::wrap(sample_document_by_lda_cpp(length, topic_probs, topic_type_probs));
     return rcpp_result_gen;
 END_RCPP
 }
-// sample_corpus_cpp
-Rcpp::DataFrame sample_corpus_cpp(const Rcpp::IntegerVector length, const Rcpp::NumericMatrix& topic_probs, const Rcpp::NumericMatrix& topic_type_probs);
-RcppExport SEXP _docsler_sample_corpus_cpp(SEXP lengthSEXP, SEXP topic_probsSEXP, SEXP topic_type_probsSEXP) {
+// sample_corpus_by_lda_cpp
+Rcpp::DataFrame sample_corpus_by_lda_cpp(const Rcpp::IntegerVector length, const Rcpp::NumericMatrix& topic_probs, const Rcpp::NumericMatrix& topic_type_probs);
+RcppExport SEXP _docsler_sample_corpus_by_lda_cpp(SEXP lengthSEXP, SEXP topic_probsSEXP, SEXP topic_type_probsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const Rcpp::IntegerVector >::type length(lengthSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type topic_probs(topic_probsSEXP);
     Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type topic_type_probs(topic_type_probsSEXP);
-    rcpp_result_gen = Rcpp::wrap(sample_corpus_cpp(length, topic_probs, topic_type_probs));
+    rcpp_result_gen = Rcpp::wrap(sample_corpus_by_lda_cpp(length, topic_probs, topic_type_probs));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_docsler_sample_document_cpp", (DL_FUNC) &_docsler_sample_document_cpp, 3},
-    {"_docsler_sample_corpus_cpp", (DL_FUNC) &_docsler_sample_corpus_cpp, 3},
+    {"_docsler_sample_document_by_lda_cpp", (DL_FUNC) &_docsler_sample_document_by_lda_cpp, 3},
+    {"_docsler_sample_corpus_by_lda_cpp", (DL_FUNC) &_docsler_sample_corpus_by_lda_cpp, 3},
     {NULL, NULL, 0}
 };
 
