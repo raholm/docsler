@@ -1,3 +1,11 @@
+#' Latent Dirichlet Allocation
+#'
+#' Samples documents based on the generative process in Latent Dirichlet Allocation.
+#'
+#' @param size An integer or vector of integers.
+#' @param model A matrix of probabilities. Model[i, j] should be the probability of word j given topic i. The value can either be a probability, [0, 1], or a frequency, [0, inf).
+#' @param alpha A numeric or vector of numerics. The parameter(s) to the topic dirichlet distribution. The distribution will be symmetric if alpha is a single value.
+#'
 #' @export
 lda <- function(size, model, alpha) {
     checkr::assert_integer(size, lower=1)
