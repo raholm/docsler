@@ -27,6 +27,5 @@ lda <- function(size, model, alpha) {
     else
         document <-  sample_corpus_by_lda_cpp(size, topic_probs, model)
 
-    document %>%
-        dplyr::as_data_frame()
+    dplyr::as_data_frame(document)
 }
