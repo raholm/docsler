@@ -15,7 +15,7 @@ Rcpp::DataFrame sample_document_by_lda_cpp(size_t length,
       convert_from_R(topic_type_probs)};
   Document document = sampler.next(length);
   IntVector doc_ids(length, document.id);
-  return Rcpp::DataFrame::create(Rcpp::Named("docid") = doc_ids,
+  return Rcpp::DataFrame::create(Rcpp::Named("doc") = doc_ids,
                                  Rcpp::Named("type") = document.types,
                                  Rcpp::Named("topic") = document.topics);
 }
@@ -28,7 +28,7 @@ Rcpp::DataFrame sample_corpus_by_lda_cpp(const Rcpp::IntegerVector length,
       convert_from_R(topic_probs),
       convert_from_R(topic_type_probs)};
   Corpus corpus = sampler.next(convert_from_R(length));
-  return Rcpp::DataFrame::create(Rcpp::Named("docid") = corpus.doc_ids,
+  return Rcpp::DataFrame::create(Rcpp::Named("doc") = corpus.doc_ids,
                                  Rcpp::Named("type") = corpus.types,
                                  Rcpp::Named("topic") = corpus.topics);
 }
